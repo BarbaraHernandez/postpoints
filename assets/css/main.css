@@ -1,0 +1,23 @@
+body{
+    background-color: #414053;
+}
+
+#red-body{
+    background-color: #904646;
+    color: #fffeee;
+}
+
+#blue-body{
+    background-color: #496a89;
+    color: #fffeee;
+}
+
+#green-body{
+    background-color: #496951;
+    color: #fffeee;
+}
+
+#yellow-body{
+    background-color: #c39814;
+    color: #fffeee;
+}
