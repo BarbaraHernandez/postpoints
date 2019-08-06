@@ -2,6 +2,10 @@ body{
     background-color: #414053;
 }
 
+.container{
+    margin-top: 1em;
+}
+
 #red-body{
     background-color: #904646;
     color: #fffeee;

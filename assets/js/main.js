@@ -34,15 +34,24 @@ $(document).ready(function(){
 
     //event listeners for red house
     //award
-    $(document).on("click", "#award-red", function awardRed(redPoints){
+    $(document).on("click", "#award-red", function awardRed(){
         event.preventDefault();
-        redPoints += 5;
+        var redNumeric = parseInt(redPoints);
+        redNumeric += 5;
         database.ref('housePoints').set({
-            redHousePoints: redPoints
+            redHousePoints: redNumeric
         });
     });
 
     //deduct
+    $(document).on("click", "#deduct-red", function awardRed(){
+        event.preventDefault();
+        var redNumeric = parseInt(redPoints);
+        redNumeric -= 5;
+        database.ref('housePoints').set({
+            redHousePoints: redNumeric
+        });
+    });
 
     
   });
