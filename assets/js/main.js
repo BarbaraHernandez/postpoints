@@ -22,23 +22,40 @@ $(document).ready(function(){
     var bluePoints = 0;
     var greenPoints = 0;
     var yellowPoints = 0;
+    var redDB = database.ref('redHouse');
+    var blueDB = database.ref('blueHouse');
+    var greenDB = database.ref('greenHouse');
+    var yellowDB = database.ref('yellowHouse');
 
     //get current point values
-    var pointsRef = database.ref();
-    pointsRef.on('value', function(snapshot) {
-        console.log(snapshot.val());
+    //red
+    redDB.on('value', function(snapshot) {
         $("#red-points").text(snapshot.val().redHousePoints);
         redPoints = snapshot.val().redHousePoints;
-        $("#blue-points").text(snapshot.val().blueHousePoints);
-        bluePoints = snapshot.val().blueHousePoints;
-        $("#green-points").text(snapshot.val().greenHousePoints);
-        greenPoints = snapshot.val().greenHousePoints;
-        $("#yellow-points").text(snapshot.val().yellowHousePoints);
-        yellowPoints= snapshot.val().yellowHousePoints;
-    }, function(errorObject) {
+    }, function (errorObject) {
     console.log("Read House Points failed: " + errorObject.code);
     });
- 
+    //blue
+    blueDB.on('value', function(snapshot) {
+        $("#blue-points").text(snapshot.val().blueHousePoints);
+        bluePoints = snapshot.val().blueHousePoints;
+    }, function (errorObject) {
+    console.log("Read House Points failed: " + errorObject.code);
+    });
+    //green
+    greenDB.on('value', function(snapshot) {
+        $("#green-points").text(snapshot.val().greenHousePoints);
+        greenPoints = snapshot.val().greenHousePoints;
+    }, function (errorObject) {
+    console.log("Read House Points failed: " + errorObject.code);
+    });
+    //yellow
+    yellowDB.on('value', function(snapshot) {
+        $("#yellow-points").text(snapshot.val().yellowHousePoints);
+        yellowPoints = snapshot.val().yellowHousePoints;
+    }, function (errorObject) {
+    console.log("Read House Points failed: " + errorObject.code);
+    }); 
 
     //event listeners
     //Red House
@@ -47,7 +64,7 @@ $(document).ready(function(){
         event.preventDefault();
         var redNumeric = parseInt(redPoints);
         redNumeric += 5;
-        database.ref().set({
+        redDB.set({
             redHousePoints: redNumeric
         });
     });
@@ -57,7 +74,7 @@ $(document).ready(function(){
         event.preventDefault();
         var redNumeric = parseInt(redPoints);
         redNumeric -= 5;
-        database.ref().set({
+        redDB.set({
             redHousePoints: redNumeric
         });
     });
@@ -68,7 +85,7 @@ $(document).ready(function(){
         event.preventDefault();
         var blueNumeric = parseInt(bluePoints);
         blueNumeric += 5;
-        database.ref().set({
+        blueDB.set({
             blueHousePoints: blueNumeric
         });
     });
@@ -78,7 +95,7 @@ $(document).ready(function(){
         event.preventDefault();
         var blueNumeric = parseInt(bluePoints);
         blueNumeric -= 5;
-        database.ref().set({
+        blueDB.set({
             blueHousePoints: blueNumeric
         });
     });
@@ -89,7 +106,7 @@ $(document).ready(function(){
         event.preventDefault();
         var greenNumeric = parseInt(greenPoints);
         greenNumeric += 5;
-        database.ref().set({
+        greenDB.set({
             greenHousePoints: greenNumeric
         });
     });
@@ -99,7 +116,7 @@ $(document).ready(function(){
         event.preventDefault();
         var greenNumeric = parseInt(greenPoints);
         greenNumeric -= 5;
-        database.ref().set({
+        greenDB.set({
             greenHousePoints: greenNumeric
         });
     });
@@ -110,7 +127,7 @@ $(document).ready(function(){
         event.preventDefault();
         var yellowNumeric = parseInt(yellowPoints);
         yellowNumeric += 5;
-        database.ref().set({
+        yellowDB.set({
             yellowHousePoints: yellowNumeric
         });
     });
@@ -120,7 +137,7 @@ $(document).ready(function(){
         event.preventDefault();
         var yellowNumeric = parseInt(yellowPoints);
         yellowNumeric -= 5;
-        database.ref().set({
+        yellowDB.set({
             yellowHousePoints: yellowNumeric
         });
     });
